@@ -34,3 +34,36 @@ def p2(n = 4000000):
 # 	statement = "%s()" % 'p2'
 # 	t = Timer(statement, "from __main__ import p2")
 # 	print("%.9f" % min(t.repeat(3, 50000)))
+
+def p3(n=90):
+	# cf. cocodrips
+	i = 2
+	table = []
+	while i * i <= n:
+		while n % i == 0:
+			n /= i
+			table.append(i)
+		i += 1
+	# 最後残った数は素因数なのでappend
+	if n > 1:
+		table.append(n)
+	return table
+
+# print(max(p3(600851475143)))
+def ano_p3(n):
+	# cf. sujay
+	roots = []
+	product = 1
+	x = 2
+	y = number = n
+	while product != number:
+		# 素因数のときにだけappendを行う
+		while y%x == 0:
+			roots.append(x)
+			y /= x
+			# 素因数を掛けあわせてもとの数にする
+			product *= roots[-1]
+		x += 1
+	print(roots)
+# ano_p3(600851475143)
+
