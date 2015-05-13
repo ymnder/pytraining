@@ -70,3 +70,36 @@ def ano_p3(n):
 		x += 1
 	print(roots)
 # ano_p3(600851475143)
+
+import math
+
+
+def p4():
+	beforenum = 100
+	afternum = 100
+	table = []
+	while afternum < 1000:
+		while beforenum < 1000:
+			if p4kai(beforenum * afternum):
+				table.append(beforenum * afternum)
+			beforenum += 1
+		beforenum = 100
+		afternum += 1
+	print(max(table))
+
+
+def p4kai(n=9009):
+	# 回文を判定する
+	num = str(n)
+	i = 0
+	kai_flg = False
+	while i < math.ceil(len(num)) / 2:
+		if num[i] == num[-(i + 1)]:
+			kai_flg = True
+			i += 1
+		else:
+			kai_flg = False
+			break
+	return kai_flg
+
+p4()
