@@ -78,6 +78,7 @@ def p4():
 	beforenum = 100
 	afternum = 100
 	table = []
+	# for i in range(101,1001):　を使う
 	while afternum < 1000:
 		while beforenum < 1000:
 			if p4kai(beforenum * afternum):
@@ -93,6 +94,7 @@ def p4kai(n=9009):
 	num = str(n)
 	i = 0
 	kai_flg = False
+	# i<=len(num)/2で十分
 	while i < math.ceil(len(num)) / 2:
 		if num[i] == num[-(i + 1)]:
 			kai_flg = True
@@ -103,3 +105,16 @@ def p4kai(n=9009):
 	return kai_flg
 
 p4()
+
+def ano_p4():
+	# cf:paulj
+	maxp = 0
+	for i in range(100, 1000):
+		for j in range(i, 1000):
+			p = i * j
+			# str[::-1]でリバースを行える
+			# 今回は回文なのでリバースが等しければ良い
+			# 更にmaxpを更新していくことで最大の数を比較できる
+			if str(p) == str(p)[::-1] and p > maxp:
+				maxp = p
+	print(maxp)
